@@ -24,7 +24,7 @@ exports.voteCandidate = async (req, res) => {
         if (!candidate) {
             return res.status(400).json({ msg: 'Candidate not found' });
         }
-        // Ensure the user hasn't already voted
+        
         const userVote = await Vote.findOne({ user: req.user.id });
         if (userVote) {
             return res.status(400).json({ msg: 'You have already voted' });
